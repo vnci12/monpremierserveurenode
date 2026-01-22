@@ -1,0 +1,28 @@
+{
+  "name": "monpremierserveurnode",
+  "version": "1.0.0",
+  "description": "je crée mon premier serveur Node. Le but est d'apprendre à gérer les requêtes http.",
+  "keywords": [
+    "serveur",
+    "node",
+    "javascript"
+  ],
+  "homepage": "https://github.com/vnci12/monpremierserveurenode#readme",
+  "bugs": {
+    "url": "https://github.com/vnci12/monpremierserveurenode/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vnci12/monpremierserveurenode.git"
+  },
+  "license": "ISC",
+  "author": "Mohamed Ahamada Yowane",
+  "type": "commonjs",
+  "main": "serveur.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
