@@ -26,6 +26,19 @@ app.use((req, res, next) => {
     next();
 });
 
+//j'ajoute un middleware qui gère la sécuriter d'accès
+
+app.use((req, res, next) => {
+    //j'ajoute les headers pour permettre l'accès à mon API depuis n'importe quelle origine
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    //j'autorise certaines en-têtes dans les requêtes recuses. les en-têtes autorisées sont : Origin, X-Requested-With, Content, Accept, Content-Type, Authorization
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+
+    //j'autorise certaines méthodes: GET, POST, PUT, DELETE, PATCH, OPTIONS
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    next();
+});
+
 //je dessines mes routes avc Express en utilisant le /api/fruit
 
 app.use('/api/fruit', (req, res) => {
@@ -38,10 +51,17 @@ app.use('/api/fruit', (req, res) => {
             description: "la pomme est un fruit rouge ou vert riche en vitamine C",
             prix: 3
         },
-    ],
+
+        {
+            id: 2,
+            nom: "banane",
+            description: "la banane est un fruit jaune riche en potassium",
+            prix: 2
+        }
+    ];
     // en terme de reponse je renvoie le tableau de fruit que j'ai créé
 
-    res.json(fruit);
+    res.status(200).json(fruit);
 });
 
 /**
