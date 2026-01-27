@@ -13,15 +13,36 @@ app.use((req,res, next) => {
 });
 
 //j'utilise un middleware 2 pour retourner la réponse au client lorsqu'il fait la requête localhost:3000. La réponse est au format JSON
-app.use((req, res) => {
-    res.json({message: "Et arrete de voller mes manges !"});
+
+app.use((req, res, next) => {
+    console.log("Et arrete de voller mes manges !");
     next();
 });
 
 //J'utilise un middleware 3 pour tester l'ordre d'exécution des middlewares
-app.use((req, res)=> {
-    res.console("je suis un middleware dans le serveur");
-})
+
+app.use((req, res, next) => {
+    console.log("je suis un middleware dans le serveur");
+    next();
+});
+
+//je dessines mes routes avc Express en utilisant le /api/fruit
+
+app.use('/api/fruit', (req, res) => {
+    console.log("je rentre chez moi wagnawé /api/fruit");
+    //mon fruit
+    const fruit = [
+        {
+            id: 1,
+            nom: "pomme",
+            description: "la pomme est un fruit rouge ou vert riche en vitamine C",
+            prix: 3
+        },
+    ],
+    // en terme de reponse je renvoie le tableau de fruit que j'ai créé
+
+    res.json(fruit);
+});
 
 /**
  * J'exporte l'application express sous forme de module
