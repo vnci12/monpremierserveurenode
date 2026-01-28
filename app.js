@@ -39,9 +39,10 @@ app.use((req, res, next) => {
     next();
 });
 
-//je dessines mes routes avc Express en utilisant le /api/fruit
-
-app.use('/api/fruit', (req, res) => {
+/**
+ * je dessines mes routes avc Express en utilisant le /api/ avec la méthode GET dans postman: localhost:3003/api/fruit 
+*/
+app.get('/api/fruit', (req, res) => {
     console.log("je rentre chez moi wagnawé /api/fruit");
     //mon fruit
     const fruit = [
@@ -62,6 +63,19 @@ app.use('/api/fruit', (req, res) => {
     // en terme de reponse je renvoie le tableau de fruit que j'ai créé
 
     res.status(200).json(fruit);
+});
+
+//je cree une route POST pour ajouter un fruit
+app.post('/api/fruit', (req, res) => {
+    console.log("arrête de voler /api/fruit avec la méthode POST");
+    res.status(201).json({ message: 'Fruit ajouté avec succès !' });
+
+});
+
+//je cree une route PUT pour modifier un fruit
+app.put('/api/fruit/', (req, res) => {
+    console.log("koubahouwa boh mwana /api/fruit avec la méthode PUT");
+    res.status(200).json({ message: 'Fruit modifié avec succès !' });
 });
 
 /**
